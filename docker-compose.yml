@@ -1,0 +1,66 @@
+version: "3"
+
+services:
+  log_owl_backend:
+    container_name: backend
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    image: jz222/logowl:2.2.1
+    restart: on-failure:5
+    expose:
+      - 2800
+      - 8080
+
+    environment:
+      LETSENCRYPT_HOST: ${URL_BACKEND}
+      VIRTUAL_PROTO: http
+      VIRTUAL_PORT: ${PORT} 
+      VIRTUAL_HOST: ${URL_BACKEND}
+      SECRET: ${SECRET} 
+      PORT: ${PORT} 
+      MONGO_URI: ${MONGO_URI} 
+      MONGO_DB_NAME: ${MONGO_DB_NAME}
+      MAILGUN_PRIVATE_KEY: ${MAILGUN_PRIVATE_KEY} 
+      MAILGUN_DOMAIN: ${MAILGUN_DOMAIN} 
+      MAILGUN_API_BASE: eu
+      CLIENT_URL: ${CLIENT_URL}
+      MONTHLY_REQUEST_LIMIT: ${MONTHLY_REQUEST_LIMIT}  
+      IS_SELFHOSTED: ${IS_SELFHOSTED}  
+    # volumes:
+    #   - .:/srv/app
+    # command: 'tail -f /dev/null'
+    networks:
+      - nginx_main
+      - backend
+
+
+  log_owl_frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: on-failure:5
+    expose:
+      - 3000
+    stdin_open: true
+    environment:
+      LETSENCRYPT_HOST: ${URL_FRONTEND} 
+      VIRTUAL_PROTO: http
+      VIRTUAL_HOST: ${URL_FRONTEND} 
+    volumes:
+      - ./frontend:/srv/app
+      # - "/srv/app/node_modules"
+    # command: 'tail -f /dev/null'
+    command: sh -c "npm run start"
+    networks:
+      - nginx_main
+    depends_on: 
+      - log_owl_backend
+
+
+networks:
+  nginx_main:
+    external: true
+  backend:
+    external: true
