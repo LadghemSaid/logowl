@@ -1,0 +1,59 @@
+@import "stylesheets/animations";
+
+.navExit {
+    animation: slideOut 0.5s forwards;
+}
+
+.box {
+    width: 100%;
+    max-width: 40rem;
+    margin: 15rem auto 0 auto;
+    animation: slideIn 1s forwards;
+
+    input {
+        margin: 0 0 2rem 0;
+
+        &:first-of-type {
+            margin: 2rem 0;
+        }
+    }
+}
+
+.message {
+    margin-top: 2rem;
+    padding: 0.5rem 0;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.error {
+    @extend .message;
+    background-color: var(--color-4-light);
+    color: var(--color-4);
+}
+
+.sessionExpired {
+    @extend .message;
+    background-color: var(--color-5-light);
+    color: var(--color-5);
+}
+
+.boxExit {
+    animation: slideOut 1s forwards;
+}
+
+.passwordNotice {
+    width: 100%;
+    display: block;
+    margin-top: -1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-4);
+}
+
+.resetPassword {
+    width: 100%;
+    text-align: center;
+}

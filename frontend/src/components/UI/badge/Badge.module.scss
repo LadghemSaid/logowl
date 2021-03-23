@@ -1,0 +1,30 @@
+.badge {
+    display: inline-block;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.small {
+    @extend .badge;
+    line-height: 1.2rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.tiny {
+    @extend .badge;
+    line-height: 1rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+}
+
+.neutral {
+    background-color: var(--color-2-darker);
+    color: var(--color-2-dark);
+}
+
+.info {
+    background-color: var(--color-3-lighter);
+    color: var(--color-3);
+}

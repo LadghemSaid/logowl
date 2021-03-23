@@ -1,0 +1,205 @@
+@import "stylesheets/animations";
+
+.box {
+    width: 100%;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    margin: 10rem auto 0 auto;
+    border-radius: var(--border-radius);
+    background-color: var(--color-2);
+    animation: slideIn 1s;
+    text-align: center;
+
+    button:first-of-type {
+        margin-right: 2rem;
+    }
+
+    h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    h5 {
+        margin-bottom: 4rem;
+    }
+
+    hr {
+        width: 100%;
+        margin: 3rem auto 7rem auto;
+    }
+}
+
+.stepper {
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-2-dark);
+}
+
+.bubble {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--color-2-darker);
+    transition: background-color 0.4s, color 0.4s;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+.highlighted {
+    background-color: var(--color-3);
+    color: var(--color-2);
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    > div,
+    > input {
+        width: 100%;
+    }
+
+    > input:first-of-type {
+        margin: 0 2rem 2rem 0;
+    }
+}
+
+.passwordNotice {
+    display: block;
+    margin-top: 0.7rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-4);
+}
+
+.passwordNoticeValid {
+    @extend .passwordNotice;
+    color: var(--color-5);
+}
+
+.organization {
+    input {
+        width: 100%;
+    }
+}
+
+.user {
+    .row:first-of-type {
+        margin-bottom: 2rem;
+    }
+}
+
+.consent {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    text-align: left;
+
+    p {
+        margin-left: 1rem;
+        font-size: 1.4rem;
+    }
+}
+
+.loading {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem 0;
+    color: var(--color-2-dark);
+
+    > div:last-child {
+        margin-top: 1rem;
+    }
+}
+
+.success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+.failure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+
+    span {
+        padding: 0.2rem 0.7rem;
+        border-radius: var(--border-radius);
+        background-color: var(--color-4-light);
+        color: var(--color-4);
+
+        &:first-letter {
+            text-transform: capitalize;
+        }
+    }
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem auto 0 auto;
+}
+
+@media screen and (min-width: 576px) {
+    .box {
+        padding: 4.5rem;
+        border: 1px solid var(--color-2-darker);
+        box-shadow: var(--shadow);
+
+        hr {
+            width: 80%;
+            margin: 3rem auto;
+        }
+    }
+
+    .organization {
+        input {
+            width: 80%;
+        }
+    }
+
+    .row {
+        flex-direction: row;
+
+        > div,
+        > input {
+            width: 50%;
+        }
+
+        > input:first-of-type {
+            margin: 0 2rem 0 0;
+        }
+    }
+}

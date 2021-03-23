@@ -1,0 +1,43 @@
+@import "stylesheets/animations";
+
+.nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-2-darker);
+    background-color: var(--color-2);
+    box-shadow: var(--shadow);
+    animation: slideIn 0.7s forwards;
+    z-index: 9;
+
+    > div:first-child {
+        width: 25rem;
+    }
+}
+
+.user {
+    display: flex;
+    align-items: center;
+
+    > div:first-child {
+        margin-right: 1rem;
+    }
+}
+
+.name {
+    max-width: 20rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+.email {
+    @extend .name;
+    font-weight: normal;
+    font-size: 1.2rem;
+}

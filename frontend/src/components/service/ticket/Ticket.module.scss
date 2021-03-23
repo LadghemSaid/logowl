@@ -1,0 +1,21 @@
+.ticket {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+    span {
+        margin: 0 auto;
+        padding: 0.7rem 1rem;
+        border-radius: var(--border-radius);
+        background-color: var(--color-3-light);
+        font-weight: 500;
+        color: var(--color-3);
+    }
+}
+
+.ticket + p {
+    max-width: 50rem;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--color-2-dark);
+}
