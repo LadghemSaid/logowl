@@ -15,25 +15,24 @@ services:
     environment:
       LETSENCRYPT_HOST: ${URL_BACKEND}
       VIRTUAL_PROTO: http
-      VIRTUAL_PORT: ${PORT} 
+      VIRTUAL_PORT: ${PORT}
       VIRTUAL_HOST: ${URL_BACKEND}
-      SECRET: ${SECRET} 
-      PORT: ${PORT} 
-      MONGO_URI: ${MONGO_URI} 
+      SECRET: ${SECRET}
+      PORT: ${PORT}
+      MONGO_URI: ${MONGO_URI}
       MONGO_DB_NAME: ${MONGO_DB_NAME}
-      MAILGUN_PRIVATE_KEY: ${MAILGUN_PRIVATE_KEY} 
-      MAILGUN_DOMAIN: ${MAILGUN_DOMAIN} 
+      MAILGUN_PRIVATE_KEY: ${MAILGUN_PRIVATE_KEY}
+      MAILGUN_DOMAIN: ${MAILGUN_DOMAIN}
       MAILGUN_API_BASE: eu
       CLIENT_URL: ${CLIENT_URL}
-      MONTHLY_REQUEST_LIMIT: ${MONTHLY_REQUEST_LIMIT}  
-      IS_SELFHOSTED: ${IS_SELFHOSTED}  
+      MONTHLY_REQUEST_LIMIT: ${MONTHLY_REQUEST_LIMIT}
+      IS_SELFHOSTED: ${IS_SELFHOSTED}
     # volumes:
     #   - .:/srv/app
     # command: 'tail -f /dev/null'
     networks:
       - nginx_main
       - backend
-
 
   log_owl_frontend:
     container_name: frontend
@@ -45,9 +44,9 @@ services:
       - 3000
     stdin_open: true
     environment:
-      LETSENCRYPT_HOST: ${URL_FRONTEND} 
+      LETSENCRYPT_HOST: ${URL_FRONTEND}
       VIRTUAL_PROTO: http
-      VIRTUAL_HOST: ${URL_FRONTEND} 
+      VIRTUAL_HOST: ${URL_FRONTEND}
     volumes:
       - ./frontend:/srv/app
       # - "/srv/app/node_modules"
@@ -55,9 +54,8 @@ services:
     command: sh -c "npm run start"
     networks:
       - nginx_main
-    depends_on: 
+    depends_on:
       - log_owl_backend
-
 
 networks:
   nginx_main:
